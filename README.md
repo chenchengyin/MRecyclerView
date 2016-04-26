@@ -1,17 +1,18 @@
 # MRecyclerView
-
+项目CSDN地址:
+http://blog.csdn.net/u014665060/article/details/51241526
 Android懒人专用RecyclerView+懒人专用Adapter+懒人专用animator+下拉刷新上拉加载更多（可DIY）
 特别声明:开源框架并非本人亲手敲出来的,本人只是站在巨人的肩膀上,整合了一下别人优秀的代码,并加以使用,希望方便到各位.
 ###下啦刷新,上拉加载更多(可DIY):
-![](http://img.blog.csdn.net/20160426200038532)
+![](http://img.blog.csdn.net/20160426203038364?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
 ###支持多种动画:
 
-![](http://img.blog.csdn.net/20160426200105039)
+![](http://img.blog.csdn.net/20160426203050349?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
 ###多个ItemType(只需30行代码):
 
-![](http://img.blog.csdn.net/20160426200338712?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+![](http://img.blog.csdn.net/20160426203100780?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
 #1.LoadingIndicator的用法: 
 
