@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.demotest.testapp">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ProgressStyleDemoActivity"
+            android:label="样式+侧滑菜单"></activity>
+        <activity
+            android:name=".MarshonRecyclerViewActivity"
+            android:label="所有">
+
+        </activity>
+        <activity
+            android:name=".MarshonFastAdapterActivity"
+            android:label="快速适配器">
+
+        </activity>
+
+        <activity
+            android:name=".MarshonAnimatorActivity"
+            android:label="各种动画,可拓展性非常强">
+
+        </activity>
+    </application>
+
+</manifest>

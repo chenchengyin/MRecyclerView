@@ -1,0 +1,3 @@
+include  ':testapp'
+include ':xrecyclerview'
+include ':base-adapter-library'
