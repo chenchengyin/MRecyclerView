@@ -2,7 +2,7 @@
 项目CSDN地址:
 http://blog.csdn.net/u014665060/article/details/51241526
 Android RecyclerView+item动画+下拉刷新,上拉加载更多,侧滑删除（易用,可定制）（可DIY）
-特别声明:开源框架并非本人亲手敲出来的,本人只是站在巨人的肩膀上,整合了一下别人优秀的代码,并加以使用,希望方便到各位.
+特别声明:开源框架并非全部本人亲手敲出来的,本人只是站在巨人的肩膀上,整合了一下别人优秀的代码,并加修改融合,希望方便到各位盆友并Get到盆友们的支持,喜欢的star或者fork下.
 ###下拉刷新,上拉加载更多(可DIY):
 ![](http://img.blog.csdn.net/20160426203038364?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
@@ -15,22 +15,16 @@ Android RecyclerView+item动画+下拉刷新,上拉加载更多,侧滑删除（�
 ![](http://img.blog.csdn.net/20160426203100780?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
 
-#1.下面重点介绍下MReyclerView
+#1.介绍下MReyclerView
     
 
-       这个控件可以说是非常让我兴奋的,因为之前使用过XlistView,在其可以实现下拉刷新,上拉加载更多功能上深得喜爱,可定制型也非常强,可以自己实现成类似于京东,淘宝等下拉刷新动画效果.令人遗憾的是,support包中的RecyclerView是越来越火了,并且以其一妓之长击败了ListView和GridView拿到双杀.
+       因为之前使用过XlistView,在其可以实现下拉刷新,上拉加载更多功能上深得喜爱,可定制型也非常强,可以自己实现成类似于京东,淘宝等下拉刷新动画效果.原理差不多,加个HeaderView和FooterView作为下拉刷新和上拉加载更多.通过改变HeaderView的height来实现滑动的效果.加上属性动画让用户体验更佳.
 
-    本人感觉原因大概有以下三点:
-
-    1.具有更加优秀的RecycleBin机制,比AbsListView更好的处理创建和回收过程.
-
-    2.爸爸级展示效果,可以一列,双列,还有decoration等等,可以很自由的旋转.
-
-    3.ItemAnimation, 现在app在性能上已不是主题, 用户体验才是目标了, 而各种酷炫的动画效果则是提高用户体验的重要因素.
+  
 
 ###=============分割线=============================================================
 
-    一不小心又B了那么多,其实XRecyclerView用法没多大难度,跟RecyclerView用法一样,哎,就是这么简单粗暴咯.
+    一不小心又B了那么多,其实MRecyclerView用法没多大难度,跟RecyclerView用法一样,哎.
 
 #2.ItemAnimator 
 
@@ -58,13 +52,19 @@ Android RecyclerView+item动画+下拉刷新,上拉加载更多,侧滑删除（�
         但是 AnimationAdapter是一个抽象类, 需要重载一个类来实现里面的getAnimators方法.详细写法可参照demo里的ChooseAnimatorsAdapter类.也可以查看Xrecyclerview包下的animators包,里面提供了很多已经写好的AnimatorAdapters类,拿来即用,懒嘛..哈哈  另外提一下, 在下拉刷新和动画并不和侧滑冲突,爽爽哒
 
 #3.侧滑菜单栏
-详情键SwipeWraper,只要在listietm最外层套上他,并且当做FrameLayout来使用就可以实现侧滑菜单功能.
+详情键SwipeWraper,只要在listietm最外层套上他,并且当做FrameLayout来使用就可以实现侧滑菜单功能.哎
 
     
-只要对holder进行各种操作即可,holder里面的功能有限,不过可以根据自身需求添加.
-    各种方法如:
-
-    holder.setImageUrl(id,url);
+     View deleteView = holder.itemView.findViewById(R.id.tv_delete);
+                final SwipeWraper swipelayout = (SwipeWraper) holder.itemView.findViewById(R.id.swipelayout);
+                deleteView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        swipelayout.close(true);
+                        datas.remove(holder.getLayoutPosition()-1);
+                        animAdapter.notifyItemRemoved(holder.getLayoutPosition());
+                    }
+                });
 
 可以省去很多load img方法重写.
     值得开心的是:产品狗一般不让一个recyclerview里面只放一种item. 这个框架作者也考虑到了这点, 写法稍微复杂点,不过有兴趣的去看下张大神的github哈.# MRecyclerView
