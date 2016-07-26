@@ -7,17 +7,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
-import com.zhy.base.adapter.ViewHolder;
- import java.util.List;
+
+import com.marshon.mrecyclerview.MRecyclerView;
+
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/4/25.
  */
-public abstract class BaseActivity extends AppCompatActivity implements XRecyclerView.LoadingListener {
+public abstract class BaseActivity extends AppCompatActivity implements MRecyclerView.LoadingListener {
 
     protected Toolbar toolBar;
-    protected XRecyclerView mRecyclerView;
+    protected MRecyclerView mRecyclerView;
     protected Spinner spinner;
 
     @Override
@@ -30,7 +31,7 @@ public abstract class BaseActivity extends AppCompatActivity implements XRecycle
 
     private void init(View rootView) {
         spinner = (Spinner) rootView.findViewById(R.id.spinner);
-        mRecyclerView = (XRecyclerView) rootView.findViewById(R.id.mRecyclerView);
+        mRecyclerView = (MRecyclerView) rootView.findViewById(R.id.mRecyclerView);
         toolBar = (Toolbar) rootView.findViewById(R.id.tool_bar);
         setSupportActionBar(toolBar);
         getSupportActionBar().setTitle("Marshon");
@@ -49,15 +50,7 @@ public abstract class BaseActivity extends AppCompatActivity implements XRecycle
         if(spinnerData==null){
             return;
         }
-        com.zhy.base.adapter.abslistview.CommonAdapter<String> adapter = new com.zhy.base.adapter.abslistview.CommonAdapter<String>(this, R.layout.listitem_text,spinnerData ) {
-            @Override
-            public void convert(ViewHolder holder, String o) {
-                holder.setText(R.id.text1, "" + o);
-                holder.setTextSize(R.id.text1, 15);
-
-            }
-        };
-        spinner.setAdapter(adapter);
+//        spinner.setAdapter(adapter);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

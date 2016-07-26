@@ -3,12 +3,12 @@ package com.demotest.testapp;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.TextView;
 
-import com.daimajia.swipe.SwipeLayout;
-import com.zhy.base.adapter.ViewHolder;
-import com.zhy.base.adapter.recyclerview.CommonAdapter;
+import com.demotest.testapp.adapter.MarshonRecyclerAdapter;
+import com.marshon.mrecyclerview.MRecyclerView;
+import com.marshon.swipe.SwipeWraper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +17,8 @@ import java.util.List;
  * Created by Administrator on 2016/4/25.
  */
 public class MarshonRecyclerViewActivity extends BaseActivity {
-
-    private CommonAdapter adapter;
     private ChooseAnimatorsAdapter animAdapter;
     private List datas;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,32 +28,26 @@ public class MarshonRecyclerViewActivity extends BaseActivity {
 
         //make full data test
         datas = new ArrayList();
-        for(int i=0;i<1000;i++){
+        for(int i=0;i<15;i++){
             datas.add("");
         }
 
-
-        //1.do somethings about adapter;
-        adapter = new CommonAdapter<String>(this, R.layout.listitem, datas) {
+        MarshonRecyclerAdapter adapter= new MarshonRecyclerAdapter(this, datas) {
             @Override
-            public void convert(final ViewHolder holder, String s) {
-                //1.1do somethings;
-                final SwipeLayout swipeLayout= (SwipeLayout) holder.getConvertView().findViewById(R.id.swipelayout);
-                TextView tv_delete= (TextView) swipeLayout.findViewById(R.id.tv_delete);
-
-                swipeLayout.setShowMode(SwipeLayout.ShowMode.PullOut);
-                swipeLayout.addDrag(SwipeLayout.DragEdge.Right, tv_delete);
-
-                tv_delete.setOnClickListener(new View.OnClickListener() {
+            public void convert(final RecyclerView.ViewHolder holder, final int position) {
+                View deleteView = holder.itemView.findViewById(R.id.tv_delete);
+                final SwipeWraper swipelayout = (SwipeWraper) holder.itemView.findViewById(R.id.swipelayout);
+                deleteView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        swipeLayout.close(true);
-                        adapter.notifyItemRemoved(holder.getLayoutPosition());
+                        swipelayout.close(true);
+                        datas.remove(holder.getLayoutPosition()-1);
+                        animAdapter.notifyItemRemoved(holder.getLayoutPosition());
                     }
                 });
-
             }
         };
+
         //2.set up recyclerview
         final LinearLayoutManager manager=new LinearLayoutManager(this);
         //3.给adapter装饰上animAdapter
@@ -64,9 +55,25 @@ public class MarshonRecyclerViewActivity extends BaseActivity {
         animAdapter.setAnimatorFlag(ChooseAnimatorsAdapter.ANIMATORFLAG_SCALE);
         mRecyclerView.setAdapter(animAdapter);
         mRecyclerView.setLayoutManager(manager);
+        mRecyclerView.setLoadingListener(new MRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
 
+            }
 
-
+            @Override
+            public void onLoadMore() {
+                mRecyclerView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        for(int i=0;i<15;i++){
+                            datas.add("");
+                        }
+                        animAdapter.notifyDataSetChanged();
+                    }
+                },3000);
+            }
+        });
     }
 
 

@@ -1,3 +1,2 @@
 include  ':testapp'
-include ':xrecyclerview'
-include ':base-adapter-library'
+include ':mrecyclerview'

@@ -6,7 +6,8 @@ import android.animation.PropertyValuesHolder;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import jp.wasabeef.recyclerview.adapters.AnimationAdapter;
+import com.marshon.adapters.AnimationAdapter;
+
 
 /**
  * //自定义动画管理类

@@ -31,11 +31,11 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <com.jcodecraeer.xrecyclerview.XRecyclerView
+        <com.marshon.mrecyclerview.MRecyclerView
             android:id="@+id/mRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
-        <com.jcodecraeer.xrecyclerview.XRecyclerView
+        <com.marshon.mrecyclerview.MRecyclerView
             android:id="@+id/mRecyclerView2"
             android:visibility="gone"
             android:layout_width="match_parent"

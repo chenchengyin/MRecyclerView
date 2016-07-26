@@ -15,25 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ProgressStyleDemoActivity"
-            android:label="样式+侧滑菜单"></activity>
-        <activity
-            android:name=".MarshonRecyclerViewActivity"
-            android:label="所有">
+        <activity android:name=".MarshonRecyclerViewActivity"/>
 
-        </activity>
-        <activity
-            android:name=".MarshonFastAdapterActivity"
-            android:label="快速适配器">
-
-        </activity>
-
-        <activity
-            android:name=".MarshonAnimatorActivity"
-            android:label="各种动画,可拓展性非常强">
-
-        </activity>
     </application>
 
 </manifest>

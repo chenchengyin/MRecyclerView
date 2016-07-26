@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.daimajia.swipe.SwipeLayout
-    android:id="@+id/swipelayout"
+<com.marshon.swipe.SwipeWraper
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipelayout"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
-
 
     <TextView
         android:id="@+id/tv_delete"
@@ -28,4 +26,4 @@
         android:scaleType="fitCenter"
         android:src="@drawable/beauty"/>
 
-</com.daimajia.swipe.SwipeLayout>
+</com.marshon.swipe.SwipeWraper>

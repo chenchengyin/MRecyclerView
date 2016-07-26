@@ -25,18 +25,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.progressDemo:
                 //TODO implement
-                Intent i =new Intent(this,ProgressStyleDemoActivity.class);
-                startActivity(i);
+//                Intent i =new Intent(this,ProgressStyleDemoActivity.class);
+//                startActivity(i);
                 break;
             case R.id.animatorsDemo:
                 //TODO implement
-                Intent j =new Intent(this,MarshonAnimatorActivity.class);
-                startActivity(j);
+//                Intent j =new Intent(this,MarshonAnimatorActivity.class);
+//                startActivity(j);
                 break;
             case R.id.adapterDemo:
                 //TODO implement
-                Intent k =new Intent(this,MarshonFastAdapterActivity.class);
-                startActivity(k);
+//                Intent k =new Intent(this,MarshonFastAdapterActivity.class);
+//                startActivity(k);
                 break;
             case R.id.fireTheHall:
                 //TODO implement
