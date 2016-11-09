@@ -5,8 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.demotest.testapp.R;
-
 import java.util.List;
 
 /**
@@ -15,17 +13,19 @@ import java.util.List;
  */
 public abstract class MarshonRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    private  int listitem;
     private List<String> mDatas;
     private  Context mContext;
 
-    public MarshonRecyclerAdapter(Context context,List<String> mDatas){
+    public MarshonRecyclerAdapter(Context context, int listitem, List<String> mDatas){
         this.mContext=context;
         this.mDatas=mDatas;
+        this.listitem=listitem;
     }
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View itemView=View.inflate(mContext, R.layout.listitem,null);
+        View itemView=View.inflate(mContext, listitem,null);
         return new MViewHolder(itemView);
     }
 

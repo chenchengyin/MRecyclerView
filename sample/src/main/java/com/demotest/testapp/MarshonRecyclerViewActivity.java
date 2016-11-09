@@ -2,6 +2,7 @@ package com.demotest.testapp;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -13,26 +14,28 @@ import com.marshon.swipe.SwipeWraper;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 /**
  * Created by Administrator on 2016/4/25.
  */
-public class MarshonRecyclerViewActivity extends BaseActivity {
+public class MarshonRecyclerViewActivity extends AppCompatActivity {
     private ChooseAnimatorsAdapter animAdapter;
     private List datas;
+    private MRecyclerView mRecyclerView;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_marsreview);
-        spinner.setVisibility(View.GONE);
-        toolBar.setTitle("Marshon");
+        mRecyclerView = (MRecyclerView) findViewById(R.id.mRecyclerView);
+        mRecyclerView.setPullRefreshEnabled(true);
+        mRecyclerView.setLoadingMoreEnabled(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //make full data test
-        datas = new ArrayList();
-        for(int i=0;i<15;i++){
-            datas.add("");
-        }
-
-        MarshonRecyclerAdapter adapter= new MarshonRecyclerAdapter(this, datas) {
+        //1.make full data test
+        datas = makeDatas();
+        MarshonRecyclerAdapter adapter= new MarshonRecyclerAdapter(this,R.layout.listitem, datas) {
             @Override
             public void convert(final RecyclerView.ViewHolder holder, final int position) {
                 View deleteView = holder.itemView.findViewById(R.id.tv_delete);
@@ -77,14 +80,12 @@ public class MarshonRecyclerViewActivity extends BaseActivity {
     }
 
 
-
-    @Override
-    public List<String> getSpinnerData() {
-        return null;
+    protected List<String> makeDatas() {
+        List datas = new ArrayList();
+        for(int i=0;i<400;i++){
+            datas.add(""+i);
+        }
+        return datas;
     }
 
-    @Override
-    public void onSpinnerItemClick(int position) {
-
-    }
 }

@@ -1,2 +1,2 @@
-include  ':testapp'
+include ':sample'
 include ':mrecyclerview'

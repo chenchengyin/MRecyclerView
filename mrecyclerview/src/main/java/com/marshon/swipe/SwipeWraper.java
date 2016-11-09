@@ -168,14 +168,7 @@ public class SwipeWraper extends FrameLayout {
         public void onReveal(View child, DragEdge edge, float fraction, int distance);
     }
 
-    /**
-     * bind a view with a specific
-     * {@link com.daimajia.swipe.SwipeWraper.OnRevealListener}
-     *
-     * @param childId the view id.
-     * @param l       the target
-     *                {@link com.daimajia.swipe.SwipeWraper.OnRevealListener}
-     */
+
     public void addRevealListener(int childId, OnRevealListener l) {
         View child = findViewById(childId);
         if (child == null) {
@@ -191,13 +184,6 @@ public class SwipeWraper extends FrameLayout {
         mRevealListeners.get(child).add(l);
     }
 
-    /**
-     * bind multiple views with an
-     * {@link com.daimajia.swipe.SwipeWraper.OnRevealListener}.
-     *
-     * @param childIds the view id.
-     * @param l        the {@link com.daimajia.swipe.SwipeWraper.OnRevealListener}
-     */
     public void addRevealListener(int[] childIds, OnRevealListener l) {
         for (int i : childIds)
             addRevealListener(i, l);
@@ -399,11 +385,6 @@ public class SwipeWraper extends FrameLayout {
         }
     };
 
-    /**
-     * the dispatchRevealEvent method may not always get accurate position, it
-     * makes the view may not always get the event when the view is totally
-     * show( fraction = 1), so , we need to calculate every time.
-     */
     protected boolean isViewTotallyFirstShowed(View child, Rect relativePosition, DragEdge edge, int surfaceLeft,
                                                int surfaceTop, int surfaceRight, int surfaceBottom) {
         if (mShowEntirely.get(child)) return false;
@@ -543,9 +524,6 @@ public class SwipeWraper extends FrameLayout {
         }
     }
 
-    /**
-     * prevent bottom view get any touch event. Especially in LayDown mode.
-     */
     private void safeBottomView() {
         Status status = getOpenStatus();
         List<View> bottoms = getBottomViews();
